@@ -1,0 +1,21 @@
+01背包（压缩后：内层循环倒着循环， 因为要用到上一层左边的 j - v[i]）当前的第 j 个物品：取 或者 不取：
+	dp[i][j] = max(dp[i-1][j], dp[i-1][j - v[i]] + w[i])
+	 
+	压缩：
+	dp[j] = max(dp[j], dp[j - v[i]] + w[i])
+
+//
+完全背包（压缩后：内层循环顺着循环）：当前的第 j 个物品: 都不取 或者 取多个
+	dp[i][j] = max(dp[i-1][j], dp[i][j - v[i]] + w[i])
+	
+	压缩：
+	dp[j] = max(dp[j], dp[j - v[i]] + w[i])  
+
+//
+多重背包（压缩后：内层循环倒着循环）：
+	dp[i][j] = max(dp[i-1][j], dp[i][j - v[i] * k] + w[i] * k),
+	dp[i][j] = max(dp[i-1][j], dp[i][j - v[i] * res] + w[i] * res);
+	
+	压缩： 
+	dp[j] = max(dp[j], dp[j - v[i] * k] + w[i] * k),
+	dp[j] = max(dp[j], dp[j - v[i] * res] + w[i] * res);
